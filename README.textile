@@ -110,7 +110,7 @@ h3. First configure the gateway
 Put the following code in, for instance, an initializer:
 
 <pre>
-ActiveMerchant::Billing::IdealGateway.acquirer = :ing # Other banks preloaded are :abnamro and :rabobank
+ActiveMerchant::Billing::IdealGateway.acquirer = :ing # Other banks preloaded are :abnamro, :rabobank, :simulator (http://www.ideal-simulator.nl/ideal-simulator-instellingen.html)
 ActiveMerchant::Billing::IdealGateway.merchant_id = '00123456789'
 ActiveMerchant::Billing::IdealGateway.passphrase = 'the_private_key_passphrase'
 

@@ -1,3 +1,7 @@
+simulator:
+  test: https://www.ideal-simulator.nl/professional/
+  live: https://www.ideal-simulator.nl/professional/
+
 ing:
   live: https://ideal.secure-ing.com/ideal/iDeal
   test: https://idealtest.secure-ing.com/ideal/iDeal
