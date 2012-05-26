@@ -5,6 +5,7 @@ require 'openssl'
 require 'net/https'
 require 'base64'
 require 'digest/sha1'
+require 'rest'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc: 
@@ -223,6 +224,18 @@ module ActiveMerchant #:nodoc:
 
       def post_data(gateway_url, data, response_klass)
         response_klass.new(ssl_post(gateway_url, data), :test => test?)
+      end
+      
+      def ssl_post(url, body)
+        response = REST.post(url, body, {
+          'Content-Type' => 'application/xml; charset=utf-8'
+        }, {
+          :tls_verify      => !test?,
+          :tls_key         => self.class.private_key,
+          :tls_certificate => self.class.private_certificate
+        })
+        Rails.logger.info("iDEAL Response (#{url}): #{response.body}")
+        response.body
       end
 
       # This is the list of charaters that are not supported by iDEAL according
